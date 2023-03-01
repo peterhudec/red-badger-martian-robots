@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 const computePath = ({
   path,
   robotX,
@@ -43,7 +45,8 @@ const computePath = ({
         return {
           x,
           y,
-          orientation: 'LOST',
+          orientation,
+          lost: true,
           scented: {
             [x]: {
               [y]: true,
@@ -69,10 +72,39 @@ const computePath = ({
   return {x, y, orientation}
 }
 
+const computePaths = ({
+  worldH,
+  worldW,
+  robots,
+}) =>
+  robots.reduce(
+    (a, robot) => {
+      const {scented, ...destination} = computePath({
+        worldH,
+        worldW,
+        scented: a.scented,
+        ...robot,
+      })
+
+      return {
+        destinations: [
+          ...a.destinations,
+          destination,
+        ],
+        scented: _.merge(a.scented, scented),
+      }
+    },
+    {
+      destinations: [],
+      scented: {},
+    },
+  ).destinations
+
 const martianRobots = input => {
 }
 
 module.exports = {
   computePath,
+  computePaths,
   martianRobots,
 }

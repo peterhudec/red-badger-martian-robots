@@ -1,7 +1,6 @@
 const sut = require('./index.js')
 
 test('computePath', () => {
-
   expect(sut.computePath({
     robotOrientation: 'E',
     robotX: 1,
@@ -27,7 +26,8 @@ test('computePath', () => {
   })).toEqual({
     x: 3,
     y: 3,
-    orientation: 'LOST',
+    orientation: 'N',
+    lost: true,
     scented: {
       3: {
         3: true,
@@ -52,4 +52,48 @@ test('computePath', () => {
     y: 3,
     orientation: 'S',
   })
+})
+
+test('martianRobots', () => {
+  expect(sut.computePaths({
+    worldW: 5,
+    worldH: 3,
+    robots: [
+      {
+        robotX: 1,
+        robotY: 1,
+        robotOrientation: 'E',
+        path: 'RFRFRFRF',
+      },
+      {
+        robotX: 3,
+        robotY: 2,
+        robotOrientation: 'N',
+        path: 'FRRFLLFFRRFLL',
+      },
+      {
+        robotX: 0,
+        robotY: 3,
+        robotOrientation: 'W',
+        path: 'LLFFFLFLFL',
+      },
+    ],
+  })).toEqual([
+    {
+      x: 1,
+      y: 1,
+      orientation: 'E',
+    },
+    {
+      x: 3,
+      y: 3,
+      orientation: 'N',
+      lost: true,
+    },
+    {
+      x: 2,
+      y: 3,
+      orientation: 'S',
+    },
+  ])
 })
