@@ -4,7 +4,8 @@
   "description": "Red Badger coding challenge",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "Peter Hudec",
   "license": "ISC",
