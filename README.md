@@ -13,6 +13,12 @@ Clone the repository
 $ git clone git@github.com:peterhudec/red-badger-martian-robots.git
 ```
 
+Move to the cloned directory
+
+```sh
+$ cd red-badger-martian-robots
+```
+
 Install dependencies
 
 ```sh
