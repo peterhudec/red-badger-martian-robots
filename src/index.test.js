@@ -1,7 +1,7 @@
 const sut = require('./index.js')
 
-test('computePath', () => {
-  expect(sut.computePath({
+test('robotToDestination', () => {
+  expect(sut.robotToDestination({
     robotOrientation: 'E',
     robotX: 1,
     robotY: 1,
@@ -15,7 +15,7 @@ test('computePath', () => {
     orientation: 'E',
   })
 
-  expect(sut.computePath({
+  expect(sut.robotToDestination({
     robotOrientation: 'N',
     robotX: 3,
     robotY: 2,
@@ -35,7 +35,7 @@ test('computePath', () => {
     },
   })
 
-  expect(sut.computePath({
+  expect(sut.robotToDestination({
     robotOrientation: 'W',
     robotX: 0,
     robotY: 3,
@@ -54,8 +54,8 @@ test('computePath', () => {
   })
 })
 
-test('martianRobots', () => {
-  expect(sut.computePaths({
+test('robotsToDestinations', () => {
+  expect(sut.robotsToDestinations({
     worldW: 5,
     worldH: 3,
     robots: [

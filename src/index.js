@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-const computePath = ({
+const robotToDestination = ({
   path,
   robotX,
   robotY,
@@ -72,14 +72,14 @@ const computePath = ({
   return {x, y, orientation}
 }
 
-const computePaths = ({
+const robotsToDestinations = ({
   worldH,
   worldW,
   robots,
 }) =>
   robots.reduce(
     (a, robot) => {
-      const {scented, ...destination} = computePath({
+      const {scented, ...destination} = robotToDestination({
         worldH,
         worldW,
         scented: a.scented,
@@ -100,11 +100,7 @@ const computePaths = ({
     },
   ).destinations
 
-const martianRobots = input => {
-}
-
 module.exports = {
-  computePath,
-  computePaths,
-  martianRobots,
+  robotToDestination,
+  robotsToDestinations,
 }
